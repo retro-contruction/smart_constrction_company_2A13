@@ -44,7 +44,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-
+bool check=true;
+bool check2=true;
 
     QString id=ui->lineEdit->text();
     QString nom=ui->lineEdit_2->text();
@@ -54,7 +55,11 @@ void MainWindow::on_pushButton_clicked()
 
 
     Employes E(id,nom,prenom,poste);
-    if(id!= NULL && nom!=NULL && prenom!=NULL && poste!= NULL )
+
+
+    check=E.checkforint(nom);
+    check2=E.checkforint(prenom);
+    if(id!= NULL && nom!=NULL && prenom!=NULL && poste!= NULL && check && check2 )
     {
 
 
@@ -74,7 +79,7 @@ void MainWindow::on_pushButton_clicked()
 
     else
         QMessageBox::information(nullptr, QObject::tr("ECHEC!!!"),
-                    QObject::tr("Tous less champs doivent etre remplis.\n"), QMessageBox::Cancel);
+                    QObject::tr("Tous les champs doivent etre remplis Et nom et prenom doivent avoir seulement des caracteres.\n"), QMessageBox::Cancel);
 
 }
 
@@ -120,13 +125,18 @@ ui->comboBox_2->setModel(insemployes.modifier_liste_employes());
 
 void MainWindow::on_pushButton_3_clicked()
 {
-
+    bool check=true;
+    bool check2=true;
         QString id=ui->comboBox_2->currentText();
         QString nom=ui->lineEdit_6->text();
         QString prenom=ui->lineEdit_7->text();
         QString poste=ui->comboBox_4->currentText();
 
        Employes E(id,nom,prenom,poste);
+       check=E.checkforint(nom);
+       check2=E.checkforint(prenom);
+       if(id!= NULL && nom!=NULL && prenom!=NULL && poste!= NULL && check && check2 )
+       {
         if(E.modifier(id))
         {
                   QMessageBox::information(nullptr, QObject::tr("Modifier un employé"),
@@ -138,5 +148,12 @@ void MainWindow::on_pushButton_3_clicked()
             QMessageBox::critical(nullptr, QObject::tr("Modifier un employé"),
                               QObject::tr("Erreur !\n"), QMessageBox::Cancel);
         }
+       }
+        else
+        {
+            QMessageBox::information(nullptr, QObject::tr("ECHEC!!!"),
+                        QObject::tr("Tous les champs doivent etre remplis Et nom et prenom doivent avoir seulement des caracteres.\n"), QMessageBox::Cancel);
+
+    }
 
 }

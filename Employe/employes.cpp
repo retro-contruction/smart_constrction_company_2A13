@@ -102,14 +102,30 @@ QSqlQueryModel * Employes::modifier_liste_employes()
 
 
 
+bool Employes::checkforint(QString x)
+{
+bool check=true;
+if(x.isEmpty())
+{
+    check=false;
+    return check;
+    }
+else
+{
+    for(int i=0;i<x.size();i++)
+    {
 
+        if(x[i].isDigit())
+        {
+         check=false;
+         break;
+        }
+    }
+}
 
+return check;
 
-
-
-
-
-
+}
 
 
 
@@ -162,38 +178,12 @@ QSqlQueryModel * Employes::tri()
 }
 
 
-QSqlQueryModel * Employes::affecter_conge()
-{
-    QSqlQueryModel * model= new QSqlQueryModel();
-
-    model->setQuery("select idc from conges ");
-
-        return model;
-}
 
 
 
 
 
-bool Employes::affecter(QString)
-{
-    QSqlQuery query;
 
-
-    query.prepare("UPDATE employes set  congeemp='"+congeemp+"' where matemp like '"+matemp+"' ");
-
-
-    query.bindValue(":congeemp", congeemp);
-
-    return    query.exec();
-}
-
-QSqlQuery Employes::recuperer(QString matemp)
-{
-    QSqlQuery query;
-    query.prepare("select * from employes where matemp='"+matemp+"'");
-    return query;
-}
 
 
 */

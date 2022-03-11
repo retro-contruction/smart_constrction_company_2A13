@@ -37,7 +37,7 @@ public:
     void setposte(QString);
 
 
-
+    bool checkforint(QString);
     bool ajouter();
     QSqlQueryModel * afficher();
     bool supprimer(QString);
