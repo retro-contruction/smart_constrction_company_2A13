@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include "terrain.h"
+#include "statistique.h"
+#include "map.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -26,8 +28,20 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_pushButton_2_clicked();
+
+    void on_trier_clicked();
+
+    void on_buttStatistique_clicked();
+
+    void on_trier_2_clicked();
+
+    void on_pushButton_map_clicked();
+
 private:
     Ui::MainWindow *ui;
+    statistique *stat;
+    map *maps;
     Terrain  T;
 };
 #endif // MAINWINDOW_H
