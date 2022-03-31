@@ -5,6 +5,13 @@
 #include <QString>
 #include <QSqlQuery>
 #include <QSqlQueryModel>
+#include "fichier.h"
+#include <QTextBrowser>
+#include <QTextEdit>
+#include <QPdfWriter>
+#include <QPainter>
+#include <QFileDialog>
+#include <QtPrintSupport/QPrinter>
 
 class Employes
 {
@@ -12,13 +19,13 @@ private:
 
 
 
-    QString id,nom,prenom,poste;
+    QString id,nom,prenom,poste,email;
 
 
 public:
 
     Employes();
-    Employes(QString,QString,QString,QString);
+    Employes(QString,QString,QString,QString,QString);
 
 
 
@@ -27,6 +34,7 @@ public:
    QString getnom();
    QString getprenom();
    QString getposte();
+   QString getemail();
 
 
 
@@ -35,20 +43,21 @@ public:
     void setnom(QString);
     void setprenom(QString);
     void setposte(QString);
-
+    void setemail(QString);
 
     bool checkforint(QString);
     bool ajouter();
     QSqlQueryModel * afficher();
     bool supprimer(QString);
     bool modifier(QString);
+    void exporterpdf(QTextBrowser *text);
 
     QSqlQueryModel * rechercher(QString);
     QSqlQueryModel *tri();
-
+    void mailSent(QString);
     QSqlQueryModel * modifier_liste_employes();
 
-     //QSqlQuery recuperer(QString);
+
 };
 
 

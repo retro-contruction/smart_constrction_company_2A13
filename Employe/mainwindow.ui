@@ -372,23 +372,127 @@ color: rgb(0, 0, 0);</string>
                       </property>
                      </item>
                     </widget>
+                    <widget class="QLabel" name="label_9">
+                     <property name="geometry">
+                      <rect>
+                       <x>290</x>
+                       <y>280</y>
+                       <width>41</width>
+                       <height>16</height>
+                      </rect>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color: rgb(255, 255, 255);</string>
+                     </property>
+                     <property name="text">
+                      <string>E-mail</string>
+                     </property>
+                    </widget>
+                    <widget class="QLineEdit" name="lineEdit_5">
+                     <property name="geometry">
+                      <rect>
+                       <x>350</x>
+                       <y>280</y>
+                       <width>150</width>
+                       <height>20</height>
+                      </rect>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>150</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
+                     </property>
+                     <property name="maxLength">
+                      <number>40</number>
+                     </property>
+                    </widget>
                    </widget>
                    <widget class="QWidget" name="tab_2">
                     <attribute name="title">
                      <string>Show</string>
                     </attribute>
-                    <widget class="QTableView" name="test">
+                    <widget class="QLineEdit" name="lineEdit_4">
                      <property name="geometry">
                       <rect>
-                       <x>30</x>
-                       <y>30</y>
-                       <width>931</width>
-                       <height>321</height>
+                       <x>820</x>
+                       <y>0</y>
+                       <width>121</width>
+                       <height>20</height>
                       </rect>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(0, 0, 0);</string>
+                      <string notr="true">background-color: rgb(255, 255, 255);</string>
+                     </property>
+                    </widget>
+                    <widget class="QPushButton" name="pushButton_4">
+                     <property name="geometry">
+                      <rect>
+                       <x>730</x>
+                       <y>-10</y>
+                       <width>81</width>
+                       <height>31</height>
+                      </rect>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>8</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color: rgb(255, 255, 255);</string>
+                     </property>
+                     <property name="text">
+                      <string>Search By ID</string>
+                     </property>
+                    </widget>
+                    <widget class="QPushButton" name="pushButton_5">
+                     <property name="geometry">
+                      <rect>
+                       <x>840</x>
+                       <y>360</y>
+                       <width>101</width>
+                       <height>31</height>
+                      </rect>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color: rgb(255, 255, 255);</string>
+                     </property>
+                     <property name="text">
+                      <string>Order By Name</string>
+                     </property>
+                    </widget>
+                    <widget class="QPushButton" name="pushButton_6">
+                     <property name="geometry">
+                      <rect>
+                       <x>50</x>
+                       <y>360</y>
+                       <width>81</width>
+                       <height>31</height>
+                      </rect>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(255, 255, 255);</string>
+                     </property>
+                     <property name="text">
+                      <string>Génerer PDF</string>
+                     </property>
+                    </widget>
+                    <widget class="QTableView" name="test">
+                     <property name="geometry">
+                      <rect>
+                       <x>10</x>
+                       <y>50</y>
+                       <width>951</width>
+                       <height>291</height>
+                      </rect>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(255, 255, 255);</string>
                      </property>
                     </widget>
                    </widget>
@@ -564,6 +668,38 @@ color: rgb(0, 0, 0);</string>
                       </property>
                      </item>
                     </widget>
+                    <widget class="QLabel" name="label_10">
+                     <property name="geometry">
+                      <rect>
+                       <x>250</x>
+                       <y>260</y>
+                       <width>47</width>
+                       <height>14</height>
+                      </rect>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color: rgb(255, 255, 255);</string>
+                     </property>
+                     <property name="text">
+                      <string>E-mail</string>
+                     </property>
+                    </widget>
+                    <widget class="QLineEdit" name="lineEdit_8">
+                     <property name="geometry">
+                      <rect>
+                       <x>320</x>
+                       <y>260</y>
+                       <width>151</width>
+                       <height>20</height>
+                      </rect>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(255, 255, 255);</string>
+                     </property>
+                     <property name="maxLength">
+                      <number>40</number>
+                     </property>
+                    </widget>
                    </widget>
                    <widget class="QWidget" name="tab_4">
                     <attribute name="title">
@@ -596,6 +732,339 @@ color: rgb(0, 0, 0);</string>
                      </property>
                      <property name="text">
                       <string>DEL</string>
+                     </property>
+                    </widget>
+                    <widget class="QTextBrowser" name="textBrowser">
+                     <property name="geometry">
+                      <rect>
+                       <x>240</x>
+                       <y>140</y>
+                       <width>256</width>
+                       <height>192</height>
+                      </rect>
+                     </property>
+                    </widget>
+                   </widget>
+                   <widget class="QWidget" name="tab_5">
+                    <attribute name="title">
+                     <string>Mailing</string>
+                    </attribute>
+                    <widget class="QLabel" name="label_11">
+                     <property name="geometry">
+                      <rect>
+                       <x>100</x>
+                       <y>50</y>
+                       <width>71</width>
+                       <height>21</height>
+                      </rect>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(255, 255, 255);</string>
+                     </property>
+                     <property name="text">
+                      <string>Smtp-Server</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignCenter</set>
+                     </property>
+                    </widget>
+                    <widget class="QLabel" name="label_12">
+                     <property name="geometry">
+                      <rect>
+                       <x>100</x>
+                       <y>100</y>
+                       <width>71</width>
+                       <height>21</height>
+                      </rect>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(255, 255, 255);</string>
+                     </property>
+                     <property name="text">
+                      <string>Server Port</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignCenter</set>
+                     </property>
+                    </widget>
+                    <widget class="QLabel" name="linedit">
+                     <property name="geometry">
+                      <rect>
+                       <x>100</x>
+                       <y>150</y>
+                       <width>71</width>
+                       <height>21</height>
+                      </rect>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(255, 255, 255);</string>
+                     </property>
+                     <property name="text">
+                      <string>Username</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignCenter</set>
+                     </property>
+                    </widget>
+                    <widget class="QLabel" name="linedit125">
+                     <property name="geometry">
+                      <rect>
+                       <x>100</x>
+                       <y>190</y>
+                       <width>71</width>
+                       <height>21</height>
+                      </rect>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(255,255,255);
+</string>
+                     </property>
+                     <property name="text">
+                      <string>Password</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignCenter</set>
+                     </property>
+                    </widget>
+                    <widget class="QLabel" name="label_15">
+                     <property name="geometry">
+                      <rect>
+                       <x>100</x>
+                       <y>240</y>
+                       <width>71</width>
+                       <height>21</height>
+                      </rect>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color:rgb(255,255,255)</string>
+                     </property>
+                     <property name="text">
+                      <string>Recipant to</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignCenter</set>
+                     </property>
+                    </widget>
+                    <widget class="QLabel" name="label_16">
+                     <property name="geometry">
+                      <rect>
+                       <x>100</x>
+                       <y>290</y>
+                       <width>71</width>
+                       <height>21</height>
+                      </rect>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(255, 255, 255);</string>
+                     </property>
+                     <property name="text">
+                      <string>Subject</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignCenter</set>
+                     </property>
+                    </widget>
+                    <widget class="QLabel" name="label_18">
+                     <property name="geometry">
+                      <rect>
+                       <x>470</x>
+                       <y>50</y>
+                       <width>71</width>
+                       <height>21</height>
+                      </rect>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(255, 255, 255);</string>
+                     </property>
+                     <property name="text">
+                      <string>Message</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignCenter</set>
+                     </property>
+                    </widget>
+                    <widget class="QLineEdit" name="server">
+                     <property name="geometry">
+                      <rect>
+                       <x>200</x>
+                       <y>50</y>
+                       <width>131</width>
+                       <height>16</height>
+                      </rect>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(255, 255, 255);</string>
+                     </property>
+                     <property name="text">
+                      <string>smtp.gamil.com</string>
+                     </property>
+                    </widget>
+                    <widget class="QLineEdit" name="port">
+                     <property name="geometry">
+                      <rect>
+                       <x>200</x>
+                       <y>100</y>
+                       <width>131</width>
+                       <height>20</height>
+                      </rect>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(255, 255, 255);</string>
+                     </property>
+                     <property name="text">
+                      <string>465</string>
+                     </property>
+                    </widget>
+                    <widget class="QLineEdit" name="username">
+                     <property name="geometry">
+                      <rect>
+                       <x>200</x>
+                       <y>150</y>
+                       <width>131</width>
+                       <height>20</height>
+                      </rect>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(255, 255, 255);</string>
+                     </property>
+                     <property name="text">
+                      <string>amenallahbensmida@gmail.com</string>
+                     </property>
+                     <property name="maxLength">
+                      <number>50</number>
+                     </property>
+                    </widget>
+                    <widget class="QLineEdit" name="password">
+                     <property name="geometry">
+                      <rect>
+                       <x>200</x>
+                       <y>190</y>
+                       <width>131</width>
+                       <height>20</height>
+                      </rect>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(255, 255, 255);</string>
+                     </property>
+                     <property name="text">
+                      <string>Nikefree3690</string>
+                     </property>
+                     <property name="echoMode">
+                      <enum>QLineEdit::Password</enum>
+                     </property>
+                    </widget>
+                    <widget class="QLineEdit" name="sub">
+                     <property name="geometry">
+                      <rect>
+                       <x>200</x>
+                       <y>290</y>
+                       <width>131</width>
+                       <height>20</height>
+                      </rect>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(255, 255, 255);</string>
+                     </property>
+                     <property name="text">
+                      <string>test</string>
+                     </property>
+                    </widget>
+                    <widget class="QPlainTextEdit" name="message">
+                     <property name="geometry">
+                      <rect>
+                       <x>470</x>
+                       <y>100</y>
+                       <width>491</width>
+                       <height>211</height>
+                      </rect>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(255, 255, 255);</string>
+                     </property>
+                     <property name="plainText">
+                      <string>ok</string>
+                     </property>
+                    </widget>
+                    <widget class="QPushButton" name="send">
+                     <property name="enabled">
+                      <bool>true</bool>
+                     </property>
+                     <property name="geometry">
+                      <rect>
+                       <x>770</x>
+                       <y>340</y>
+                       <width>81</width>
+                       <height>31</height>
+                      </rect>
+                     </property>
+                     <property name="layoutDirection">
+                      <enum>Qt::LeftToRight</enum>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(85, 0, 0);</string>
+                     </property>
+                     <property name="text">
+                      <string>SEND</string>
+                     </property>
+                    </widget>
+                    <widget class="QLineEdit" name="rcpt">
+                     <property name="geometry">
+                      <rect>
+                       <x>200</x>
+                       <y>240</y>
+                       <width>131</width>
+                       <height>20</height>
+                      </rect>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(255, 255, 255);</string>
+                     </property>
+                    </widget>
+                    <widget class="QPushButton" name="exit">
+                     <property name="geometry">
+                      <rect>
+                       <x>870</x>
+                       <y>340</y>
+                       <width>91</width>
+                       <height>31</height>
+                      </rect>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(85, 0, 0);
+color: rgb(255, 255, 255);</string>
+                     </property>
+                     <property name="text">
+                      <string>Exit</string>
+                     </property>
+                    </widget>
+                    <widget class="QPushButton" name="browseBtn">
+                     <property name="geometry">
+                      <rect>
+                       <x>360</x>
+                       <y>340</y>
+                       <width>91</width>
+                       <height>31</height>
+                      </rect>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(255, 255, 255);</string>
+                     </property>
+                     <property name="text">
+                      <string>Browse</string>
+                     </property>
+                    </widget>
+                    <widget class="QLineEdit" name="file">
+                     <property name="geometry">
+                      <rect>
+                       <x>202</x>
+                       <y>340</y>
+                       <width>121</width>
+                       <height>20</height>
+                      </rect>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(255, 255, 255);</string>
                      </property>
                     </widget>
                    </widget>

@@ -1,4 +1,10 @@
-QT       += core gui sql
+QT       += core gui sql network
+QT       += core gui sql charts printsupport
+QT       += serialport
+QT       +=  printsupport
+greaterThan(QT_MAJOR_VERSION, 4):  QT += widgets multimedia
+TARGET = smtp
+TEMPLATE = app
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -19,12 +25,14 @@ SOURCES += \
     connection.cpp \
     employes.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    smtp.cpp
 
 HEADERS += \
     connection.h \
     employes.h \
-    mainwindow.h
+    mainwindow.h \
+    smtp.h
 
 FORMS += \
     mainwindow.ui

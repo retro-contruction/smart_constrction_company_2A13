@@ -1,7 +1,10 @@
 #include "employes.h"
 #include <QMessageBox>
 #include <QtDebug>
-
+#include <QTextBrowser>
+#include <QTextEdit>
+#include <QPdfWriter>
+#include <QPainter>
 
 
 Employes::Employes()
@@ -10,15 +13,17 @@ Employes::Employes()
    nom="";
    prenom="";
    poste="";
+   email="";
 
 }
 
-Employes::Employes(QString id,QString nom ,QString prenom ,QString poste)
+Employes::Employes(QString id,QString nom ,QString prenom ,QString poste,QString email)
 {
   this->id=id;
   this->nom=nom;
   this->prenom=prenom;
   this->poste=poste;
+  this->email=email;
 
 }
 
@@ -27,6 +32,7 @@ QString Employes::getid(){ return id;}
 QString Employes::getnom(){ return nom;}
 QString Employes::getprenom(){ return prenom;}
 QString Employes::getposte(){ return poste;}
+QString Employes::getemail(){ return email;}
 
 
 
@@ -34,6 +40,7 @@ void Employes::setid(QString id){this->id=id;}
 void Employes::setnom(QString nom){this->nom=nom;}
 void Employes::setprenom(QString prenom){ this->prenom=prenom;}
 void Employes::setposte(QString poste){ this->poste=poste;}
+void Employes::setemail(QString email){ this->email=email;}
 
 
 bool Employes::ajouter()
@@ -42,12 +49,13 @@ bool Employes::ajouter()
 QSqlQuery query;
 ;
 
-query.prepare("INSERT INTO employes (id,nom,prenom,poste) "
-              "VALUES (:id,:nom,:prenom,:poste)");
+query.prepare("INSERT INTO employes (id,nom,prenom,poste,email) "
+              "VALUES (:id,:nom,:prenom,:poste,:email)");
 query.bindValue(":id", id);
 query.bindValue(":nom", nom);
 query.bindValue(":prenom",prenom);
 query.bindValue(":poste",poste);
+query.bindValue(":email",email);
  return query.exec();
 
 }
@@ -61,6 +69,7 @@ QSqlQueryModel * Employes::afficher()
     model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom "));
     model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom "));
     model->setHeaderData(3, Qt::Horizontal, QObject::tr("poste"));
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("email"));
 
         return model;
 }
@@ -79,12 +88,13 @@ bool Employes::modifier(QString  id)
 
 
 
-    query.prepare("UPDATE employes set  id='"+id+"',nom='"+nom+"',prenom='"+prenom+"',poste='"+poste+"'where id like '"+id+"' ");
+    query.prepare("UPDATE employes set  id='"+id+"',nom='"+nom+"',prenom='"+prenom+"',poste='"+poste+"', email='"+email+"' where id like '"+id+"' ");
 
     query.bindValue(":id", id);
     query.bindValue(":nom", nom);
     query.bindValue(":prenom",prenom);
     query.bindValue(":poste",poste);
+    query.bindValue(":email",email);
      return query.exec();
 }
 
@@ -131,59 +141,60 @@ return check;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-QSqlQueryModel *Employes::rechercher(QString rech)
+QSqlQueryModel *Employes::rechercher(QString id)
 {
     QSqlQueryModel * model= new QSqlQueryModel();
-    model->setQuery("select * from employes where fonction LIKE '"+rech+"%' or dateemb LIKE '"+rech+"%'");
+    model->setQuery("select * from employes where id like '"+id+"' ");
     return model;
 }
+
+
 
 QSqlQueryModel * Employes::tri()
 {
     QSqlQueryModel * model= new QSqlQueryModel();
 
-    model->setQuery("select * from employes ORDER BY salaire DESC");
-
-
-    model->setHeaderData(0, Qt::Horizontal, QObject::tr("matemp"));
-    model->setHeaderData(1, Qt::Horizontal, QObject::tr("salaire"));
-    model->setHeaderData(2, Qt::Horizontal, QObject::tr("dateemb "));
-    model->setHeaderData(3, Qt::Horizontal, QObject::tr("nom "));
-    model->setHeaderData(4, Qt::Horizontal, QObject::tr("prenom "));
-    model->setHeaderData(5, Qt::Horizontal, QObject::tr("fonction "));
-    model->setHeaderData(6, Qt::Horizontal, QObject::tr("congeemp"));
-
+    model->setQuery("select * from employes ORDER BY prenom ");
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("id"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom "));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom "));
+    model->setHeaderData(3, Qt::Horizontal, QObject::tr("poste"));
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("email"));
         return model;
 }
 
 
 
 
+void Employes::exporterpdf(QTextBrowser *text)
+    {
+      // QString tt;
+        QSqlQuery qry;
+        std::list<QString> tt;
+        qry.exec("select * from employes");
+        while(qry.next())
+        {
+            tt.push_back("id: "+qry.value(0).toString()+"\n"+"nom: "+qry.value(1).toString()+"\n"+"prenom: "+qry.value(2).toString()+"\n"+"poste: "+qry.value(3).toString()+"\n"+"adresse: "+qry.value(4).toString()+"\n");
+
+        }
+
+        for(std::list<QString>::iterator it =tt.begin();it!=tt.end();++it)
+        {
+            text->setText(text->toPlainText()+*it + "----------------------------------------------------------\n");
+        }
+
+        QString fileName = QFileDialog::getSaveFileName((QWidget* )0, "Export PDF", QString(), "*.pdf");
+        if (QFileInfo(fileName).suffix().isEmpty()) { fileName.append(".pdf"); }
+        QPrinter printer(QPrinter::PrinterResolution);
+        printer.setOutputFormat(QPrinter::PdfFormat);
+        printer.setPaperSize(QPrinter::A4);
+        printer.setOutputFileName(fileName);
+        text->print(&printer);
+    }
 
 
 
 
 
 
-*/
+
