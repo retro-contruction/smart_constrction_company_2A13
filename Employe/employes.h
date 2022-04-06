@@ -5,13 +5,16 @@
 #include <QString>
 #include <QSqlQuery>
 #include <QSqlQueryModel>
-#include "fichier.h"
 #include <QTextBrowser>
 #include <QTextEdit>
 #include <QPdfWriter>
 #include <QPainter>
 #include <QFileDialog>
 #include <QtPrintSupport/QPrinter>
+
+
+
+
 
 class Employes
 {

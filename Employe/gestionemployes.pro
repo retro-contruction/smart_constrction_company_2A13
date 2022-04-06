@@ -1,3 +1,4 @@
+QT      += core
 QT       += core gui sql network
 QT       += core gui sql charts printsupport
 QT       += serialport
@@ -24,22 +25,26 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     connection.cpp \
     employes.cpp \
+    gestionemployes.cpp \
     main.cpp \
     mainwindow.cpp \
+    reset.cpp \
     smtp.cpp
 
 HEADERS += \
     connection.h \
     employes.h \
+    gestionemployes.h \
     mainwindow.h \
+    reset.h \
     smtp.h
 
 FORMS += \
-    mainwindow.ui
+    gestionemployes.ui \
+    mainwindow.ui \
+    reset.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
-RESOURCES +=
