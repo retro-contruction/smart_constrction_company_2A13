@@ -1,8 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
 #include <QMainWindow>
 #include "facture.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,8 +21,22 @@ private slots:
 
     void on_pushButton_6_clicked();
 
+    void on_pushButton_5_clicked();
+
+
+    void on_pushButton_8_clicked();
+
+    //void on_rechercher_cursorPositionChanged(int arg1, int arg2);
+
+    void on_pushButton_7_clicked();
+
+    void on_pushButton_2_clicked();
+
+    void on_pushButton_3_clicked();
+
+
 private:
     Ui::MainWindow *ui;
-    Facture Etmp;
+    Facture f,Etmp;
 };
 #endif // MAINWINDOW_H

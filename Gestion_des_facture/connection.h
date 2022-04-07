@@ -4,6 +4,11 @@
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QSqlQueryModel>
+#include "QTextBrowser"
+#include <QTextBrowser>
+#include <QPrinter>
+#include "QFileDialog"
+#include <QTextDocument>
 
 class Connection
 {
