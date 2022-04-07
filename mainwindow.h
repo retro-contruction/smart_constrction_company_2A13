@@ -38,6 +38,8 @@ private slots:
 
     void on_pushButton_map_clicked();
 
+    void on_pushButton_pdf_clicked();
+
 private:
     Ui::MainWindow *ui;
     statistique *stat;

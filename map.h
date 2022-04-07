@@ -17,6 +17,7 @@ public:
 
 private:
     Ui::map *ui;
+
 };
 
 #endif // MAP_H

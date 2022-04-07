@@ -5,6 +5,7 @@
 #include <QtCharts>
 #include <QChartView>
 #include <QPieSeries>
+#include "terrain.h"
 namespace Ui {
 class statistique;
 }
@@ -19,6 +20,8 @@ public:
 
 private:
     Ui::statistique *ui;
+    Terrain t;
+    int nb0 ,nb1;
 };
 
 #endif // STATISTIQUE_H

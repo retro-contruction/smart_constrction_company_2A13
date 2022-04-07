@@ -1,7 +1,7 @@
-QT       += core gui sql
-QT       += core gui sql charts
+QT       += core gui sql charts  printsupport quickwidgets qml network quick positioning location network
+QT       += core gui sql charts  printsupport quickwidgets qml network quick positioning location network
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets quickwidgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets quickwidgets network
 
 CONFIG += c++11
 

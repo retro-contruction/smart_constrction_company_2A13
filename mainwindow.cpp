@@ -8,6 +8,9 @@
 #include <QValidator>
 #include <QIntValidator>
 #include <QTextStream>
+#include <QtPrintSupport/QPrinter>
+#include <QPainter>
+#include <QPixmap>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -23,6 +26,8 @@ MainWindow::MainWindow(QWidget *parent)
 
 
        ui->lineEdit_dimens->setValidator(new QIntValidator(0, 9999, this));
+       QPixmap pi("C:/Users/Meddeb sofien/Desktop/projet2A c++/ggg.PNG");
+       ui->label_2->setPixmap(pi.scaled(231,211,Qt::KeepAspectRatio));
 }
 
 MainWindow::~MainWindow()
@@ -37,6 +42,8 @@ void MainWindow::on_pushButton_clicked()
     QString file_name= QFileDialog::getOpenFileName(this,"open a file","c://");
    // QFile file("c://");
     ui->lineEditplan->insert(file_name);
+    QPixmap pix(file_name);
+    ui->label_pic->setPixmap(pix.scaled(150,150,Qt::KeepAspectRatio));
 }
 
 
@@ -132,7 +139,7 @@ void MainWindow::on_buttStatistique_clicked()
     stat = new statistique(this);
     stat->show();
 
- //for(int i =0 ; i< ui->tableTerrain->rowSpan(3,1)){}
+
 
 }
 
@@ -146,4 +153,10 @@ void MainWindow::on_pushButton_map_clicked()
 {
     maps= new map(this);
     maps->show();
+}
+
+void MainWindow::on_pushButton_pdf_clicked()
+{
+   Terrain t;
+   t.exporterpdf(ui->textBrowser);
 }

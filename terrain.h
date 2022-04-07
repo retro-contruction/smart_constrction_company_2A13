@@ -5,11 +5,18 @@
 #include <QWidget>
 
 #include <QSqlQueryModel>
+#include <QTextBrowser>
+#include <QTextEdit>
+#include <QPdfWriter>
+#include <QPainter>
+#include <QFileDialog>
+#include <QtPrintSupport/QPrinter>
 class Terrain
 {
     QString id,ville,plan,adresse;
     int etat;
     int dimension;
+
 
 public:
     Terrain();
@@ -26,6 +33,10 @@ public:
  QSqlQueryModel*rechercher(QString);
  QSqlQueryModel * tri_dim();
   QSqlQueryModel * tri_dimdesc();
+  void exporterpdf(QTextBrowser *text);
+
+  int nbetat0();
+  int nbetat1();
 };
 
 #endif // TERRAIN_H
