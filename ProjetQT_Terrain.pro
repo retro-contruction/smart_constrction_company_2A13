@@ -1,5 +1,5 @@
-QT       += core gui sql charts  printsupport quickwidgets qml network quick positioning location network
-QT       += core gui sql charts  printsupport quickwidgets qml network quick positioning location network
+QT       += core gui sql charts  printsupport quickwidgets qml network quick positioning location network axcontainer widgets
+QT       += core gui sql charts  printsupport quickwidgets qml network quick positioning location network axcontainer widgets multimediawidgets serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets quickwidgets network
 
@@ -17,7 +17,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    arduino.cpp \
     connexion.cpp \
+    excel.cpp \
     main.cpp \
     mainwindow.cpp \
     map.cpp \
@@ -25,7 +27,9 @@ SOURCES += \
     terrain.cpp
 
 HEADERS += \
+    arduino.h \
     connexion.h \
+    excel.h \
     mainwindow.h \
     map.h \
     statistique.h \

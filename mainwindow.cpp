@@ -3,6 +3,7 @@
 #include <QString>
 #include <QMessageBox>
 #include "terrain.h"
+#include "excel.h"
 #include <QFileDialog>
 #include <QFile>
 #include <QValidator>
@@ -11,6 +12,9 @@
 #include <QtPrintSupport/QPrinter>
 #include <QPainter>
 #include <QPixmap>
+#include <QQuickItem>
+#include <QCoreApplication>
+#include <QtNetwork/QtNetwork>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -28,6 +32,14 @@ MainWindow::MainWindow(QWidget *parent)
        ui->lineEdit_dimens->setValidator(new QIntValidator(0, 9999, this));
        QPixmap pi("C:/Users/Meddeb sofien/Desktop/projet2A c++/ggg.PNG");
        ui->label_2->setPixmap(pi.scaled(231,211,Qt::KeepAspectRatio));
+       ui->quickWidget->setSource(QUrl(QStringLiteral("qrc:/map.qml")));
+               ui->quickWidget->show();
+               auto obj = ui->quickWidget->rootObject();
+               connect(this, SIGNAL(setCenter(QVariant, QVariant)), obj, SLOT(setCenter(QVariant, QVariant)));
+               connect(this, SIGNAL(addMarker(QVariant, QVariant)), obj, SLOT(addMarker(QVariant, QVariant)));
+
+               emit setCenter(37.27561, 9.86718);
+               emit addMarker(37.27561, 9.86718);
 }
 
 MainWindow::~MainWindow()
@@ -159,4 +171,49 @@ void MainWindow::on_pushButton_pdf_clicked()
 {
    Terrain t;
    t.exporterpdf(ui->textBrowser);
+}
+
+
+
+void MainWindow::on_pushButton_excel_clicked()
+{
+
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Excel file"), qApp->applicationDirPath (),
+                                                           tr("Excel Files (*.xls)"));
+           if (fileName.isEmpty())
+               return;
+
+           ExportExcelObject obj(fileName, "mydata", ui->tableTerrain);
+
+           //colums to export
+           obj.addField(0, "id", "char(20)");
+           obj.addField(1, "dimension", "int");
+           obj.addField(2, "etat", "int");
+           obj.addField(3, "ville", "char(20)");
+          // obj.addField(4, "plan", "char(100)");
+           obj.addField(5, "adresse", "char(20)");
+
+
+
+
+           int retVal = obj.export2Excel();
+           if( retVal > 0)
+           {
+               QMessageBox::information(this, tr("Done"),
+                                        QString(tr("%1 records exported!")).arg(retVal)
+                                        );
+
+            }
+}
+
+void MainWindow::on_locate_clicked()
+{
+    ui->quickWidget->setSource(QUrl(QStringLiteral("qrc:/map.qml")));
+            ui->quickWidget->show();
+            auto obj = ui->quickWidget->rootObject();
+            connect(this, SIGNAL(setCenter(QVariant, QVariant)), obj, SLOT(setCenter(QVariant, QVariant)));
+            connect(this, SIGNAL(addMarker(QVariant, QVariant)), obj, SLOT(addMarker(QVariant, QVariant)));
+
+        emit setCenter(ui->lineEdit_9->text().toFloat(), ui->lineEdit_12->text().toFloat());
+        emit addMarker(ui->lineEdit_9->text().toFloat(), ui->lineEdit_12->text().toFloat());
 }

@@ -40,10 +40,19 @@ private slots:
 
     void on_pushButton_pdf_clicked();
 
+
+
+    void on_pushButton_excel_clicked();
+
+    void on_locate_clicked();
+
 private:
     Ui::MainWindow *ui;
     statistique *stat;
     map *maps;
     Terrain  T;
+signals:
+     void setCenter(QVariant, QVariant);
+     void addMarker(QVariant, QVariant);
 };
 #endif // MAINWINDOW_H
