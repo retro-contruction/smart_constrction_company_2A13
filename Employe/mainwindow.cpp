@@ -46,13 +46,16 @@ void MainWindow::on_pushButton_clicked()
 {
     QString mail=ui->mail->text();
     QString password=ui->password->text();
-    if((mail=="admin")&&(password=="admin"))
-    {
 
-      gestionemployes e1;
-      this->hide();
-      e1.setModal(true);
-      e1.exec();
+    QSqlQueryModel * model= new QSqlQueryModel();
+    model->setQuery("select * from login where mail like '"+mail+"' and mdp like '"+password+"' ");
+    if(model->rowCount()==1)
+    {
+            gestionemployes e1;
+            this->hide();
+            e1.setModal(true);
+            e1.exec();
+
 
 
     }

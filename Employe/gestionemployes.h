@@ -5,6 +5,7 @@
 #include "employes.h"
 #include "mainwindow.h"
 #include "reset.h"
+#include "arduino.h"
 
 namespace Ui {
 class gestionemployes;
@@ -23,7 +24,7 @@ private slots:
      void mailSent(QString);
      void sendMail();
      void browse();
-
+     void update_label();
 
 
      void on_send_clicked();
@@ -44,10 +45,22 @@ private slots:
 
      void on_pushButton_3_clicked();
 
+     void on_label_20_linkActivated(const QString &link);
+
+     void on_on_clicked();
+
+     void on_off_clicked();
+
+     void on_rech_ter_clicked();
+
+     void on_arduino_linkActivated(const QString &link);
+
 private:
      Ui::gestionemployes *ui;
      Employes insemployes;
      QStringList files;
+     arduino A;
+     QByteArray data;
 };
 
 #endif // GESTIONEMPLOYES_H

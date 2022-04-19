@@ -1,6 +1,7 @@
 #include "gestionemployes.h"
 #include "ui_gestionemployes.h"
 #include "employes.h"
+#include "arduino.h"
 #include "smtp.h"
 #include <QSqlQuery>
 #include <QSqlQueryModel>
@@ -30,6 +31,27 @@ gestionemployes::gestionemployes(QWidget *parent) :
     ui(new Ui::gestionemployes)
 {
     ui->setupUi(this);
+//Arduino
+
+    int ret= A.connect_arduino();
+       switch(ret)
+       {case(0):
+           qDebug() << "arduino is available and cooneted to  : "<<A.getarduino_port_name();
+           break;
+        case(1):
+           qDebug()<< "arduino is available but not conected to : "<< A.getarduino_port_name();
+           break;
+        case(-1):
+           qDebug()<<"arduino is no available ";
+           break;
+
+       }
+       QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update_label()) );
+
+
+
+
+//Arduino
 
     connect(ui->send, SIGNAL(clicked()),this, SLOT(sendMail()));
     connect(ui->exit, SIGNAL(clicked()),this, SLOT(close()));
@@ -232,3 +254,118 @@ void gestionemployes::on_pushButton_3_clicked()
     Employes e;
     e.exporterpdf(ui->textBrowser);
 }
+
+
+
+
+//Arduino
+
+
+
+
+void gestionemployes::update_label()
+{
+
+
+    QString id_e = ui->id_ard->text();
+    QString id_b;
+    data=A.read_from_arduino();
+    QSqlQuery query;
+
+    query.prepare("SELECT id from TERRAINS where id like '"+id_e+"' ");
+    query.bindValue(":id",id_e);
+       if(query.exec())
+       {
+           while(query.next())
+           {
+
+               id_b = query.value(0).toString();
+
+           }
+
+
+      }
+       if(id_e==id_b)
+
+     {
+         if(data=="0")
+         {
+             QString zero="0";
+             query.prepare("UPDATE TERRAINS set  gaz='"+zero+"' where id like '"+id_b+"' ");
+             query.bindValue(":id",id_b);
+             query.bindValue(":gaz", zero);
+             query.exec();
+
+         }
+         else if(data=="1")
+         {
+             QString un="1";
+             query.prepare("UPDATE TERRAINS set  gaz='"+un+"' where id like '"+id_b+"' ");
+             query.bindValue(":id",id_b);
+             query.bindValue(":gaz", un);
+             query.exec();
+         }
+
+     }
+       else
+       {
+            ui->arduino->setText("Terrain n'existe pas");
+       }
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+    QString gaz="";
+    query.prepare("SELECT gaz from TERRAINS where id like '"+id_b+"' ");
+    query.bindValue(":id",id_b);
+       if(query.exec())
+       {
+           while(query.next())
+           {
+
+               gaz = query.value(0).toString();
+               qDebug()<< gaz;
+           }
+
+
+      }
+
+    if(gaz=="1")
+    {
+
+    ui->arduino->setText("Attention fuite de gaz dans ce terrain !!");
+
+    }
+
+   if (gaz=="0")
+    {
+       ui->arduino->setText("Pas de fuite de gaz dans ce terrain ");
+    }
+
+
+}
+
+
+
+//Arduino
+
+
+
+
+
+
+
+
