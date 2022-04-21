@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "terrain.h"
+#include "arduino.h"
 #include "statistique.h"
 #include "map.h"
 QT_BEGIN_NAMESPACE
@@ -45,12 +46,17 @@ private slots:
     void on_pushButton_excel_clicked();
 
     void on_locate_clicked();
+    void update_label();
+
+    void on_pushButton_3_clicked();
 
 private:
     Ui::MainWindow *ui;
     statistique *stat;
     map *maps;
     Terrain  T;
+     QByteArray data;
+     Arduino A;
 signals:
      void setCenter(QVariant, QVariant);
      void addMarker(QVariant, QVariant);

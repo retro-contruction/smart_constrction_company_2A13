@@ -1,4 +1,4 @@
-    #include "mainwindow.h"
+ #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QString>
 #include <QMessageBox>
@@ -15,6 +15,8 @@
 #include <QQuickItem>
 #include <QCoreApplication>
 #include <QtNetwork/QtNetwork>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QMainWindow>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -40,6 +42,20 @@ MainWindow::MainWindow(QWidget *parent)
 
                emit setCenter(37.27561, 9.86718);
                emit addMarker(37.27561, 9.86718);
+
+               // read_from_arduino();
+
+
+               int ret=A.connect_arduino(); // lancer la connexion à arduino
+                   switch(ret){
+                   case(0):qDebug()<< "arduino is available and connected to : "<< A.getarduino_port_name();
+                       break;
+                   case(1):qDebug() << "arduino is available but not connected to :" <<A.getarduino_port_name();
+                      break;
+                   case(-1):qDebug() << "arduino is not available";
+                   }
+                    QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update_label()));
+
 }
 
 MainWindow::~MainWindow()
@@ -217,3 +233,21 @@ void MainWindow::on_locate_clicked()
         emit setCenter(ui->lineEdit_9->text().toFloat(), ui->lineEdit_12->text().toFloat());
         emit addMarker(ui->lineEdit_9->text().toFloat(), ui->lineEdit_12->text().toFloat());
 }
+void MainWindow::update_label()
+{
+    data = A.read_from_arduino();
+    qDebug() << "mm";
+    if(data != "0")
+    {
+        ui->label_11->setText("Mouvement  detecté");
+    }
+    else
+    {
+        ui->label_11->setText("Mouvement non detecté");
+    }
+}
+
+/*void MainWindow::on_pushButton_3_clicked()
+{
+    A.write_to_arduino("0");
+}*/

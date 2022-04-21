@@ -48,7 +48,7 @@ Rectangle {
 
             sourceItem: Image {
                 id: image
-                source: "C:/Users/Meddeb sofien/Desktop/Nouveau dossier/pos.png"
+                source: "http://maps.gstatic.com/mapfiles/ridefinder-images/mm_20_red.png"
             }
         }
     }

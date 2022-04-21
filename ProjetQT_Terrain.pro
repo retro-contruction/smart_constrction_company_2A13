@@ -37,7 +37,6 @@ HEADERS += \
 
 FORMS += \
     mainwindow.ui \
-    map.ui \
     statistique.ui
 
 # Default rules for deployment.
