@@ -10,8 +10,8 @@ int main(int argc, char *argv[])
     MainWindow w;
     QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
     db.setDatabaseName("Source_Projet2A");
-    db.setUserName("oussama");//inserer nom de l'utilisateur
-    db.setPassword("oussama");//inserer mot de passe de cet utilisateur
+    db.setUserName("admin");//inserer nom de l'utilisateur
+    db.setPassword("admin");//inserer mot de passe de cet utilisateur
 
     if(db.open()){
         QMessageBox::information(nullptr, QObject::tr("database is open"),
